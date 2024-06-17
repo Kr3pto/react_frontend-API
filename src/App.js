@@ -5,8 +5,7 @@ import Filters from './components/Filters';
 import Cart from './components/Cart';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const baseUrl = process.env.REACT_APP_API_URL;
-
+const baseUrl = 'https://simple-ecommerce-api-1.onrender.com';
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -45,7 +44,7 @@ const App = () => {
   };
 
   const fetchCategories = () => {
-    axios.get('${baseUrl}/categories/')
+    axios.get(`${baseUrl}/categories/`)
       .then(response => {
         setCategories(response.data);
         console.log('Categories fetched:', response.data); // Debug log
@@ -54,7 +53,7 @@ const App = () => {
   };
 
   const fetchRegions = () => {
-    axios.get('${baseUrl}/regions/')
+    axios.get(`${baseUrl}/regions/`)
       .then(response => {
         setRegions(response.data);
         console.log('Regions fetched:', response.data); // Debug log
@@ -63,7 +62,7 @@ const App = () => {
   };
 
   const fetchCart = () => {
-    axios.get('${baseUrl}/cart')
+    axios.get(`${baseUrl}/cart`)
       .then(response => {
         setCart(response.data);
         console.log('Cart fetched:', response.data); // Debug log
@@ -73,7 +72,7 @@ const App = () => {
 
   const addToCart = (productId) => {
     console.log(`Adding product ${productId} to cart`); // Debug log
-    axios.post('${baseUrl}/cart/', { product_id: productId, quantity: 1 })
+    axios.post(`${baseUrl}/cart/`, { product_id: productId, quantity: 1 })
       .then(response => {
         alert('Product added to cart!');
         fetchCart();
