@@ -8,7 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const baseUrl = process.env.REACT_APP_API_URL;
 
 
-
 const App = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -46,7 +45,7 @@ const App = () => {
   };
 
   const fetchCategories = () => {
-    axios.get('http://127.0.0.1:8000/categories/')
+    axios.get('${process.env.REACT_APP_API_URL}/categories/')
       .then(response => {
         setCategories(response.data);
         console.log('Categories fetched:', response.data); // Debug log
