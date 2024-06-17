@@ -45,7 +45,7 @@ const App = () => {
   };
 
   const fetchCategories = () => {
-    axios.get('${process.env.REACT_APP_API_URL}/categories/')
+    axios.get('${baseUrl}/categories/')
       .then(response => {
         setCategories(response.data);
         console.log('Categories fetched:', response.data); // Debug log
@@ -54,7 +54,7 @@ const App = () => {
   };
 
   const fetchRegions = () => {
-    axios.get('http://127.0.0.1:8000/regions/')
+    axios.get('${baseUrl}/regions/')
       .then(response => {
         setRegions(response.data);
         console.log('Regions fetched:', response.data); // Debug log
@@ -63,7 +63,7 @@ const App = () => {
   };
 
   const fetchCart = () => {
-    axios.get('http://127.0.0.1:8000/cart')
+    axios.get('${baseUrl}/cart')
       .then(response => {
         setCart(response.data);
         console.log('Cart fetched:', response.data); // Debug log
@@ -73,7 +73,7 @@ const App = () => {
 
   const addToCart = (productId) => {
     console.log(`Adding product ${productId} to cart`); // Debug log
-    axios.post('http://127.0.0.1:8000/cart/', { product_id: productId, quantity: 1 })
+    axios.post('${baseUrl}/cart/', { product_id: productId, quantity: 1 })
       .then(response => {
         alert('Product added to cart!');
         fetchCart();
