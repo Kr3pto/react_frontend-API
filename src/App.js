@@ -5,6 +5,10 @@ import Filters from './components/Filters';
 import Cart from './components/Cart';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const baseUrl = process.env.REACT_APP_API_URL;
+
+
+
 const App = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -25,7 +29,7 @@ const App = () => {
   }, [filters]); // Ensure fetchProducts is called when filters change
 
   const fetchProducts = () => {
-    let url = `http://127.0.0.1:8000/products?`;
+    let url = `${baseUrl}/products?`;
     if (filters.category) url += `category=${filters.category}&`;
     if (filters.region) url += `region=${filters.region}&`;
     if (filters.minPrice) url += `minPrice=${filters.minPrice}&`;
